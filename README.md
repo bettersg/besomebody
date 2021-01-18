@@ -4,6 +4,5 @@ https://www.notion.so/better/Be-Somebody-formerly-Winners-in-Society-5189550d0c3
 
 = DEPENDENCIES =
 
-+ Using Prop-Types
-https://www.npmjs.com/package/prop-types
-npm install --save prop-types
++ Using Prop-Types https://www.npmjs.com/package/prop-types
++ npm install --save prop-types
