@@ -173,4 +173,17 @@ p.choice a {
 
 .dark .end {
     color: white;
+<<<<<<< HEAD
+}
+
+.nadid {
+    text-align: right;
+    color: blue;
+}
+
+.gavin {
+    text-align: left;
+    color: black;
+=======
+>>>>>>> 64ef9a8506c879201139ae16062920e3d6b8a62a
 }
