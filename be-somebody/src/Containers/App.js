@@ -1,14 +1,18 @@
 import './App.css';
 import Example from "../Components/Example/Example";
+import SceneText from "../Components/SceneText/SceneText";
+import { Component } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <Example 
-        title={"Be Somebody!"}
-      />
-    </div>
-  );
+class App extends Component {
+
+  render() {
+    return (
+      <div className="App">
+        <SceneText />
+      </div>
+    );
+  }
+
 }
 
 export default App;
