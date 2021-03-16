@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Story } from "inkjs";
 import storyContent from "../../../Story/nadid.json";
 import Choice from "../ChoiceBoard/Choice";
-import Renderer from "../../Archive/Renderer/Renderer";
+import Renderer from "../../../Archive/Renderer/Renderer";
 import { nanoid } from "nanoid";
 
 const StoryBoard = () => {

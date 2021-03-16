@@ -1,7 +1,7 @@
 import { Component } from "react";
 import "./styles.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import StoryBoard from "./Components/StoryBoard/StoryBoard";
+import StoryBoard from "./Components/Boards/StoryBoard/StoryBoard";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import { blue, green, purple } from "@material-ui/core/colors";
 import Menu from "./Pages/Menu/Menu";
