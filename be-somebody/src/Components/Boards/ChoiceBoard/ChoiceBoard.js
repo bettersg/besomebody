@@ -31,7 +31,7 @@ const ReplyOptionButton = withStyles({
 const ChoiceBoard = (props) => {
   const handleClick = (e) => {
     e.preventDefault();
-    console.log(props.choice);
+    //console.log(props.choice);
     props.onClick(props.choice.index);
   };
   const classes = useStyles();

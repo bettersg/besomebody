@@ -3,44 +3,42 @@ import React, { Suspense, lazy, useEffect, useState } from "react";
 
 const StoryBoard = (props) => {
 
-  // StoryBoard component should contain logic to Render the story
-  // according to the tags that are passed from GameController
+    // StoryBoard component should contain logic to Render the story
+    // according to the tags that are passed from GameController
 
-  const storyText = props.storyText;
+    const storyText = props.storyText;
 
-  // Default style
-  const renderDefaultStory = () => {
-    return ( 
-      <React.Suspense fallback="Loading views...">
-        <div className="container">
-          {storyText}
-        </div>
-      </React.Suspense>
-    );
-  };
+    // Default style
+    const renderDefaultStory = () => {
+        return ( 
+            <React.Suspense fallback="Loading views...">
+                <div className="container">
+                    {storyText}
+                </div>
+            </React.Suspense>
+        );
+    };
 
-  // WhatsApp style
+    // WhatsApp style
 
-  // ... style
+    // ... style
 
-  const renderStory = () => {
+    const renderStory = () => {
 
-    switch (props.storyTag) {
-      case ("_WhatsApp"):
-        break;
+        switch (props.storyTag) {
+            case ("_WhatsApp"):
+                break;
       
-      // New cases for rendering style here
+            // New cases for rendering style here
 
-      default: 
-        return renderDefaultStory();
+            default: 
+                return renderDefaultStory();
+        }
     }
-  }
 
-  return (
-    <div>
-      {renderStory()}
-    </div>
-  )
+    return (
+        renderStory()
+    )
 }
 
 export default StoryBoard;

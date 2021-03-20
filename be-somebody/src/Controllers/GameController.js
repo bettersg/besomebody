@@ -3,74 +3,78 @@ import { nanoid } from "nanoid";
 
 import { Story } from "inkjs";
 import storyContent from "../Story/nadid.json";
+import GamePage from "../Pages/GamePage/GamePage";
 
 import StoryBoard from "../Components/Boards/StoryBoard/StoryBoard";
 import ChoiceBoard from "../Components/Boards/ChoiceBoard/ChoiceBoard";
 
 
 const GameController = () => {
-  const [story, setStory] = useState(new Story(storyContent));
-  const [sceneTexts, setSceneTexts] = useState([]);
-  const [choices, setChoices] = useState([]);
-  const [tags, setTags] = useState([]);
-
-
-  const continueStory = () => {
-    while (story.canContinue) {
-      addSceneText(story.Continue(), story.currentTags);
-      story.currentChoices.forEach((e) => addChoice(e));
-      setStory(story);
-    }
-  };
-
-  const chooseChoiceIndex = (index) => {
-    setChoices([]);
-
-    story.ChooseChoiceIndex(index);
-    continueStory();
-  };
-
+    const [story, setStory] = useState(new Story(storyContent));
+    const [sceneTexts, setSceneTexts] = useState([]);
+    const [choices, setChoices] = useState([]);
+    const [tags, setTags] = useState([]);
   
-  useEffect(() => {
-    continueStory();
-  }, []);
+    // To Do: Handle tags properly
 
-  const addSceneText = (text) => {
-    setSceneTexts((oldArray) => [
-      ...oldArray,
-      {
-        text: text
-      }
-    ]);
-  };
+    useEffect(() => {
+        continueStory();
+    }, []);
 
-  const addChoice = (choice) => {
-    setChoices((oldArray) => [...oldArray, choice]);
-  };
+    const continueStory = () => {
+        while (story.canContinue) {
+            addSceneText(story.Continue(), story.currentTags);
+            story.currentChoices.forEach((e) => addChoice(e));
+            setStory(story);
+            setTags(story.currentTags)
+        }
+    };
 
-  // To Do: Handle tags properly
-  const textsToRender = sceneTexts.map((scentText, index) => (
-    <StoryBoard 
-      key={nanoid()} 
-      storyText={scentText.text} 
-      storyTag={scentText.tags} />
-  ));
+    const chooseChoiceIndex = (index) => {
+        setChoices([]);
 
-  const choicesToRender = choices.map((choice, index) => (
-    <ChoiceBoard 
-      onClick={chooseChoiceIndex} 
-      key={choice.index} 
-      choice={choice} />
-  ));
+        story.ChooseChoiceIndex(index);
+        continueStory();
+    };
 
-  return (
-    <>
-      <ul>
-        {textsToRender}
-        {choicesToRender}
-      </ul>
-    </>
-  );
+
+    const addSceneText = (text) => {
+        setSceneTexts((oldArray) => [
+        ...oldArray,
+        {
+            text: text
+        }
+        ]);
+    };
+
+    const addChoice = (choice) => {
+        setChoices((oldArray) => [...oldArray, choice]);
+    };
+
+    // const textsToRender = sceneTexts.map((sceneText, index) => (
+    //     <StoryBoard 
+    //         key={nanoid()} 
+    //         storyText={sceneText.text} 
+    //         storyTag={sceneText.tags} />
+    // ))
+    
+    // const choicesToRender = choices.map((choice, index) => (
+    //     <ChoiceBoard 
+    //         onClick={chooseChoiceIndex} 
+    //         key={choice.index} 
+    //         choice={choice} />
+    // ));
+
+    return (
+        <>
+            <GamePage
+                story={sceneTexts}
+                choices={choices}
+                tags={tags}
+                choiceOnClick={chooseChoiceIndex}
+            />
+        </>
+    );
 };
 
 export default GameController;

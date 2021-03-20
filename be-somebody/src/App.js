@@ -16,25 +16,25 @@ const outerTheme = createMuiTheme({
 });
 
 function App() {
-  return (
-    <ThemeProvider theme={outerTheme}>
-      <Router>
-        <Switch>
-          <Route exact path="/">
+    return (
+        <ThemeProvider theme={outerTheme}>
+        <Router>
+            <Switch>
+            <Route exact path="/">
 
-            <div>
-              <GameController/>
-            </div>
+                <div>
+                <GameController/>
+                </div>
 
-            <div>
-              <Menu />
-            </div>
+                <div>
+                <Menu />
+                </div>
 
-          </Route>
-        </Switch>
-      </Router>
-    </ThemeProvider>
-  );
+            </Route>
+            </Switch>
+        </Router>
+        </ThemeProvider>
+    );
 }
 
 export default App;
