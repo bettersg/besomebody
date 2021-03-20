@@ -1,15 +1,19 @@
 import { useState, useEffect } from "react";
-import { Story } from "inkjs";
-import storyContent from "../../../Story/nadid.json";
-import Choice from "../ChoiceBoard/Choice";
-import Renderer from "../../Archive/Renderer/Renderer";
 import { nanoid } from "nanoid";
 
-const GameController = (props) => {
+import { Story } from "inkjs";
+import storyContent from "../Story/nadid.json";
+
+import StoryBoard from "../Components/Boards/StoryBoard/StoryBoard";
+import ChoiceBoard from "../Components/Boards/ChoiceBoard/ChoiceBoard";
+
+
+const GameController = () => {
+  const [story, setStory] = useState(new Story(storyContent));
   const [sceneTexts, setSceneTexts] = useState([]);
   const [choices, setChoices] = useState([]);
-  const [story, setStory] = useState(new Story(storyContent));
-  // tags
+  const [tags, setTags] = useState([]);
+
 
   const continueStory = () => {
     while (story.canContinue) {
@@ -26,16 +30,16 @@ const GameController = (props) => {
     continueStory();
   };
 
+  
   useEffect(() => {
     continueStory();
   }, []);
 
-  const addSceneText = (text, tags) => {
+  const addSceneText = (text) => {
     setSceneTexts((oldArray) => [
       ...oldArray,
       {
-        text: text,
-        tags: tags
+        text: text
       }
     ]);
   };
@@ -44,12 +48,19 @@ const GameController = (props) => {
     setChoices((oldArray) => [...oldArray, choice]);
   };
 
+  // To Do: Handle tags properly
   const textsToRender = sceneTexts.map((scentText, index) => (
-    <Renderer key={nanoid()} text={scentText.text} tags={scentText.tags} />
+    <StoryBoard 
+      key={nanoid()} 
+      storyText={scentText.text} 
+      storyTag={scentText.tags} />
   ));
 
   const choicesToRender = choices.map((choice, index) => (
-    <Choice onClick={chooseChoiceIndex} key={choice.index} choice={choice} />
+    <ChoiceBoard 
+      onClick={chooseChoiceIndex} 
+      key={choice.index} 
+      choice={choice} />
   ));
 
   return (
@@ -62,4 +73,4 @@ const GameController = (props) => {
   );
 };
 
-export default StoryBoard;
+export default GameController;

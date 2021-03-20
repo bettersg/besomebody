@@ -1,8 +1,10 @@
-
+import React from "react";
 
 const GamePage = (props) => {
-    render () {
-        // storyboard 
-        // choiceboard
-    }
+    return (
+        <div>
+            storyboard
+            choiceboard
+        </div>
+    )
 } 

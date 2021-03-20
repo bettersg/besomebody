@@ -1,7 +1,9 @@
 import React from "react";
+
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import { lightGreen } from "@material-ui/core/colors";
 import { Button } from "@material-ui/core";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,7 +24,11 @@ const ReplyOptionButton = withStyles({
   }
 })(Button);
 
-const Choice = (props) => {
+// ChoiceBoard is similar to StoryBoard component
+// but it should render choices based to on knot tags received
+// and Choice tags received via props from GameController
+
+const ChoiceBoard = (props) => {
   const handleClick = (e) => {
     e.preventDefault();
     console.log(props.choice);
@@ -42,4 +48,4 @@ const Choice = (props) => {
   );
 };
 
-export default Choice;
+export default ChoiceBoard;

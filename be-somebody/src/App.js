@@ -1,10 +1,12 @@
 import { Component } from "react";
-import "./styles.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import StoryBoard from "./Components/Boards/StoryBoard/StoryBoard";
+
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import { blue, green, purple } from "@material-ui/core/colors";
+import "./styles.css";
+
 import Menu from "./Pages/Menu/Menu";
+import GameController from "./Controllers/GameController";
 
 const outerTheme = createMuiTheme({
   palette: {
@@ -19,12 +21,15 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/">
+
             <div>
-              <StoryBoard />
+              <GameController/>
             </div>
+
             <div>
               <Menu />
             </div>
+
           </Route>
         </Switch>
       </Router>
