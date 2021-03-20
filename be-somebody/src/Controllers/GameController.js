@@ -5,9 +5,6 @@ import { Story } from "inkjs";
 import storyContent from "../Story/nadid.json";
 import GamePage from "../Pages/GamePage/GamePage";
 
-import StoryBoard from "../Components/Boards/StoryBoard/StoryBoard";
-import ChoiceBoard from "../Components/Boards/ChoiceBoard/ChoiceBoard";
-
 
 const GameController = () => {
     const [story, setStory] = useState(new Story(storyContent));
@@ -50,20 +47,6 @@ const GameController = () => {
     const addChoice = (choice) => {
         setChoices((oldArray) => [...oldArray, choice]);
     };
-
-    // const textsToRender = sceneTexts.map((sceneText, index) => (
-    //     <StoryBoard 
-    //         key={nanoid()} 
-    //         storyText={sceneText.text} 
-    //         storyTag={sceneText.tags} />
-    // ))
-    
-    // const choicesToRender = choices.map((choice, index) => (
-    //     <ChoiceBoard 
-    //         onClick={chooseChoiceIndex} 
-    //         key={choice.index} 
-    //         choice={choice} />
-    // ));
 
     return (
         <>
