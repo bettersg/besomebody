@@ -32,7 +32,7 @@ const ChoiceBoard = (props) => {
   const handleClick = (e) => {
     e.preventDefault();
     //console.log(props.choice);
-    props.onClick(props.choice.index);
+    props.onClick(props.choice);
   };
   const classes = useStyles();
 

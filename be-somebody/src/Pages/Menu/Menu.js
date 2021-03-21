@@ -38,9 +38,7 @@ const innerTheme = createMuiTheme({
 });
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    display: "flex"
-  },
+
   drawer: {
     [theme.breakpoints.up("sm")]: {
       width: drawerWidth,
@@ -125,7 +123,7 @@ function ResponsiveDrawer(props) {
 
   return (
     <ThemeProvider theme={outerTheme}>
-      <div className={classes.root}>
+
         <CssBaseline />
         <AppBar position="fixed" className={classes.appBar}>
           <Toolbar>
@@ -174,7 +172,7 @@ function ResponsiveDrawer(props) {
             </Drawer>
           </Hidden>
         </nav>
-      </div>
+
     </ThemeProvider>
   );
 }

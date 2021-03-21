@@ -1,7 +1,12 @@
-import React, { Suspense, lazy, useEffect, useState } from "react";
+
+import Typography from '@material-ui/core/Typography';
+
+
 
 
 const StoryBoard = (props) => {
+
+
 
     // StoryBoard component should contain logic to Render the story
     // according to the tags that are passed from GameController
@@ -11,11 +16,9 @@ const StoryBoard = (props) => {
     // Default style
     const renderDefaultStory = () => {
         return ( 
-            <React.Suspense fallback="Loading views...">
-                <div className="container">
-                    {storyText}
-                </div>
-            </React.Suspense>
+            <Typography paragraph>
+                {storyText}
+            </Typography>
         );
     };
 

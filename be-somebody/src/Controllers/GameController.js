@@ -1,6 +1,4 @@
 import { useState, useEffect } from "react";
-import { nanoid } from "nanoid";
-
 import { Story } from "inkjs";
 import storyContent from "../Story/nadid.json";
 import GamePage from "../Pages/GamePage/GamePage";
@@ -11,6 +9,7 @@ const GameController = () => {
     const [sceneTexts, setSceneTexts] = useState([]);
     const [choices, setChoices] = useState([]);
     const [tags, setTags] = useState([]);
+    const [knot, setKnot] = useState();
   
     // To Do: Handle tags properly
 
@@ -20,20 +19,25 @@ const GameController = () => {
 
     const continueStory = () => {
         while (story.canContinue) {
-            addSceneText(story.Continue(), story.currentTags);
-            story.currentChoices.forEach((e) => addChoice(e));
+            addSceneText(story.Continue());
+            story.currentChoices.forEach((e) =>addChoice(e));
             setStory(story);
-            setTags(story.currentTags)
+            setTags(story.currentTags);
         }
     };
 
-    const chooseChoiceIndex = (index) => {
-        setChoices([]);
+    const setCurrentKnot = (choice) => {
+        const sourcePath = choice.sourcePath;
+        const knot = sourcePath.substr(0, sourcePath.indexOf('.'));
+        setKnot(knot);
+    }
 
-        story.ChooseChoiceIndex(index);
+    const chooseChoice = (choice) => {  
+        setChoices([]);
+        setCurrentKnot(choice);
+        story.ChooseChoiceIndex(choice.index);
         continueStory();
     };
-
 
     const addSceneText = (text) => {
         setSceneTexts((oldArray) => [
@@ -45,16 +49,19 @@ const GameController = () => {
     };
 
     const addChoice = (choice) => {
+        if(!knot){setCurrentKnot(choice);}
         setChoices((oldArray) => [...oldArray, choice]);
     };
 
     return (
         <>
             <GamePage
-                story={sceneTexts}
+                story={story}
+                sceneTexts={sceneTexts}
                 choices={choices}
                 tags={tags}
-                choiceOnClick={chooseChoiceIndex}
+                knot={knot}
+                choiceOnClick={chooseChoice}
             />
         </>
     );
